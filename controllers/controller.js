@@ -1,6 +1,6 @@
 const controller = {
     showHome: (req, res) => {
-        res.send("Hola")
+        res.render("home")
     }
 }
 
