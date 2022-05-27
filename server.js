@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
 const router = require("./routes/routes");
+const userSeeder = require("./seeders/userSeeder")
+const tweetSeeder = require("./seeders/tweetSeeder")
 
 app.set("view engine", "ejs")
+
+userSeeder()
+tweetSeeder()
 
 app.use("/", router);
 app.listen(3000, () => {
