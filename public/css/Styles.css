@@ -1,0 +1,29 @@
+*{
+  box-sizing: border-box;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+nav svg{
+  width: 25px;
+}
+
+nav svg.logo{
+  width: 30px; 
+}
+
+.twitterColor{
+  background-color: rgb(29, 155, 240);
+}
+nav .btn{
+  padding: 1rem 5rem;
+  border-radius: 30px;
+  border: none;
+}
+nav div{
+  padding: 5px;
+}
+nav a{
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+}
