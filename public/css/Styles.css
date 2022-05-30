@@ -90,3 +90,7 @@ button.btn.btn-light {
   border-color: rgb(29, 155, 240);
   color: white;
 }
+
+.tweet{
+  padding: 15px 0;
+}
