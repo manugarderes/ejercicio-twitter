@@ -1,14 +1,39 @@
 *{
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
-nav svg{
+
+body{height:200vh;}
+
+.newTwitBoxUserAvatar i {
+margin-top: 0.5rem;
+}
+
+.newTwitBoxFooter img{
+width: 30px;
+margin: 2px 5px;
+}
+
+.navBar{
+  height: 100vh;
+}
+.navBar svg{
   width: 25px;
 }
 
-nav svg.logo{
-  width: 30px; 
+.navBar .accMenuDiv{
+  width: 80%;
 }
+
+.navBar .accMenuDiv i{
+  width: 100%;
+}
+
+/* nav svg.logo{
+  width: 30px; 
+} */
 
 .twitterColor{
   background-color: rgb(29, 155, 240);
@@ -26,4 +51,13 @@ nav a{
   font-weight: 600;
   color: black;
   text-decoration: none;
+}
+
+.tendenciasDiv .tendenciasSearch img{
+width: 40px;
+}
+
+.tendenciasDiv .tendencias span{
+font-size: 14px;
+color: grey;
 }
