@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
     email: String, 
     description: String,
     profileImg: String,
+    password: String,
     tweets: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Tweet"

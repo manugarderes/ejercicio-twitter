@@ -4,9 +4,12 @@ mongoose.connect("mongodb://localhost/ejercicio-twitter");
 
 const tweetSchema = new mongoose.Schema({
     text: String,
-    author: String,
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
     date: {type: Date, default: Date.now}, 
-    likes: Number
+    likes: {type: Number, default: 0}, 
 });
 
 const Tweet = mongoose.model("Tweet", tweetSchema);

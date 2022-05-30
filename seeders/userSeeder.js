@@ -10,6 +10,7 @@ const userSeeder = () => {
       email: faker.internet.email(),
       description: faker.lorem.sentence(30),
       profileImg: faker.image.avatar(),
+      password: "Manu03"
     });
     user.save(() => {
       console.log("Usuario creados con exito");
