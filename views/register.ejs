@@ -113,6 +113,7 @@
           <div
             class="cross-button d-flex align-items-center justify-content-center"
             role="button"
+            onclick="toggle1and2()"
           >
             <i class="fa-solid fa-arrow-left-long"></i>
           </div>
@@ -149,6 +150,7 @@
           <div
             class="cross-button d-flex align-items-center justify-content-center"
             role="button"
+            onclick="toggle2and3()"
           >
             <i class="fa-solid fa-arrow-left-long"></i>
           </div>
@@ -207,6 +209,7 @@
           <div
             class="cross-button d-flex align-items-center justify-content-center"
             role="button"
+            onclick="toggle3and4()"
           >
             <i class="fa-solid fa-arrow-left-long"></i>
           </div>
@@ -227,11 +230,37 @@
           <a href="">¿No recibiste el correo electrónico?</a>
         </div>
 
-        <button class="button mt-3">Siguiente</button>
+        <button id="button-4" class="button mt-3">Siguiente</button>
+      </div>
+      <div id="contenedor-5" class="register-box pt-3 ocultar">
+        <div class="d-flex align-items-center px-2">
+          <div
+            class="cross-button d-flex align-items-center justify-content-center"
+            role="button"
+            onclick="toggle4and5()"
+          >
+            <i class="fa-solid fa-arrow-left-long"></i>
+          </div>
+          <h3>Paso 5 de 5</h3>
+        </div>
+        <div class="form-container">
+          <h1>Necesitarás una contraseña</h1>
+          <p class="pb-3 warning">Asegúrate de que tenga 8 caracteres o más.</p>
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="code"
+              placeholder="Contraseña"
+            />
+            <label for="code">Contraseña</label>
+          </div>
+        </div>
+
+        <button id="button-5" class="button mt-3">Siguiente</button>
       </div>
     </div>
 
-    <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
