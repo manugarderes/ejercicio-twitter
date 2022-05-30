@@ -1,27 +1,27 @@
-*{
+* {
   box-sizing: border-box;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-nav svg{
+nav svg {
   width: 25px;
 }
 
-nav svg.logo{
-  width: 30px; 
+nav svg.logo {
+  width: 30px;
 }
 
-.twitterColor{
+.twitterColor {
   background-color: rgb(29, 155, 240);
 }
-nav .btn{
+nav .btn {
   padding: 1rem 5rem;
   border-radius: 30px;
   border: none;
 }
-nav div{
+nav div {
   padding: 5px;
 }
-nav a{
+nav a {
   font-size: 1.3rem;
   font-weight: 600;
   color: black;
@@ -42,4 +42,17 @@ i.fa-brands.fa-twitter {
 button.btn.btn-light {
   margin-bottom: 10px;
   width: 100%;
+}
+
+.btn-block {
+  margin-bottom: 10px;
+  width: 100%;
+  background-color: black;
+  color: rgb(29, 155, 240);
+}
+
+.boton-celeste {
+  background-color: rgb(29, 155, 240);
+  border-color: rgb(29, 155, 240);
+  color: white;
 }
