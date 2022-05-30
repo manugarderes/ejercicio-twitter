@@ -38,3 +38,8 @@ i.fa-brands.fa-twitter {
   color: white;
   font-size: 30vw;
 }
+
+button.btn.btn-light {
+  margin-bottom: 10px;
+  width: 100%;
+}
