@@ -16,11 +16,10 @@
                 <div class="col-3">
                     <div>
                         <%- include('partials/nav')%>
-                    </div>
-                    
+                    </div>                   
                 </div>
-                <div class="col-6 border">
-                    <div class="newTwitBox">
+                <div class="col-6">
+                    <div class="newTwitBox border">
                         <div class="newTwitBoxHeader d-flex justify-content-between p-3 position-static">
                             <div>
                                 <h4 class="d-inline">Inicio</h4>
@@ -34,7 +33,7 @@
                                 <i class="fa-solid fa-circle-user fa-3x top-50"></i>
                             </div>
                             <div class="newTwitBoxBody p-3 flex-grow-1 position-relative">
-                                <form action="/tweet">
+                                <form action="/tweet" method="post">
                                     <div class="mb-3">
                                         <input type="text" name="tweetInput" placeholder='¿Qué está pasando?' class="form-control">
                                     </div>
@@ -62,7 +61,7 @@
                     </div>
                     <div class="twitFeed">
                         <div class="tweet">
-
+                            
                         </div>
                     </div>
                 </div>
