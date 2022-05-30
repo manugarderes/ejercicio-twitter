@@ -6,7 +6,6 @@ const tweetSeeder = () => {
     const tweet = new Tweet({
         text: faker.lorem.sentence(5),
         author: faker.name.firstName(),
-        likes: 0
     });
     tweet.save(() => {
       console.log("Tweet creados con exito");

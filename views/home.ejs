@@ -17,52 +17,84 @@
     ></script>
     <link rel="stylesheet" href="css/Styles.css" />
     <link rel="icon" href="img/twitter.2.ico" />
+    <script src="https://kit.fontawesome.com/ab663b69f8.js" crossorigin="anonymous"></script>
   </head>
-  <body>
+  
+<body>
     <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-3">
-            <div><%- include('partials/nav')%></div>
-          </div>
-          <div class="col-6">
-            <div class="newTwitBox border">
-              <div
-                class="newTwitBoxHeader d-flex justify-content-between p-3 position-static"
-              >
-                <div>
-                  <h4 class="d-inline">Inicio</h4>
+        <div class="container">
+            <div class="row">
+                <div class="col-3">                   
+                     <%- include('partials/nav')%>                                   
                 </div>
-                <div></div>
-                <svg
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  width="20px"
-                  class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03"
-                >
-                  <g>
-                    <path
-                      d="M22.772 10.506l-5.618-2.192-2.16-6.5c-.102-.307-.39-.514-.712-.514s-.61.207-.712.513l-2.16 6.5-5.62 2.192c-.287.112-.477.39-.477.7s.19.585.478.698l5.62 2.192 2.16 6.5c.102.306.39.513.712.513s.61-.207.712-.513l2.16-6.5 5.62-2.192c.287-.112.477-.39.477-.7s-.19-.585-.478-.697zm-6.49 2.32c-.208.08-.37.25-.44.46l-1.56 4.695-1.56-4.693c-.07-.21-.23-.38-.438-.462l-4.155-1.62 4.154-1.622c.208-.08.37-.25.44-.462l1.56-4.693 1.56 4.694c.07.212.23.382.438.463l4.155 1.62-4.155 1.622zM6.663 3.812h-1.88V2.05c0-.414-.337-.75-.75-.75s-.75.336-.75.75v1.762H1.5c-.414 0-.75.336-.75.75s.336.75.75.75h1.782v1.762c0 .414.336.75.75.75s.75-.336.75-.75V5.312h1.88c.415 0 .75-.336.75-.75s-.335-.75-.75-.75zm2.535 15.622h-1.1v-1.016c0-.414-.335-.75-.75-.75s-.75.336-.75.75v1.016H5.57c-.414 0-.75.336-.75.75s.336.75.75.75H6.6v1.016c0 .414.335.75.75.75s.75-.336.75-.75v-1.016h1.098c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"
-                    ></path>
-                  </g>
-                </svg>
-              </div>
-              <div class="newTwitBoxBody p-1 d-flex justify-content-between">
-                <div class="newTwitBoxUserAvatar text-center">
-                  <i class="fa-solid fa-circle-user fa-3x top-50"></i>
-                </div>
-                <div class="newTwitBoxBody p-3 flex-grow-1 position-relative">
-                  <form action="/tweet" method="post">
-                    <div class="mb-3">
-                      <input
-                        type="text"
-                        name="tweetInput"
-                        placeholder="¿Qué está pasando?"
-                        class="form-control"
-                      />
+                <div class="col-6">
+                    <div class="newTwitBox border">
+                        <div class="newTwitBoxHeader d-flex justify-content-between p-3 position-static">
+                            <div>
+                                <h4 class="d-inline">Inicio</h4>
+                            </div>
+                            <div>                               
+                                <svg viewBox="0 0 24 24" aria-hidden="true" width='20px' class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03"><g><path d="M22.772 10.506l-5.618-2.192-2.16-6.5c-.102-.307-.39-.514-.712-.514s-.61.207-.712.513l-2.16 6.5-5.62 2.192c-.287.112-.477.39-.477.7s.19.585.478.698l5.62 2.192 2.16 6.5c.102.306.39.513.712.513s.61-.207.712-.513l2.16-6.5 5.62-2.192c.287-.112.477-.39.477-.7s-.19-.585-.478-.697zm-6.49 2.32c-.208.08-.37.25-.44.46l-1.56 4.695-1.56-4.693c-.07-.21-.23-.38-.438-.462l-4.155-1.62 4.154-1.622c.208-.08.37-.25.44-.462l1.56-4.693 1.56 4.694c.07.212.23.382.438.463l4.155 1.62-4.155 1.622zM6.663 3.812h-1.88V2.05c0-.414-.337-.75-.75-.75s-.75.336-.75.75v1.762H1.5c-.414 0-.75.336-.75.75s.336.75.75.75h1.782v1.762c0 .414.336.75.75.75s.75-.336.75-.75V5.312h1.88c.415 0 .75-.336.75-.75s-.335-.75-.75-.75zm2.535 15.622h-1.1v-1.016c0-.414-.335-.75-.75-.75s-.75.336-.75.75v1.016H5.57c-.414 0-.75.336-.75.75s.336.75.75.75H6.6v1.016c0 .414.335.75.75.75s.75-.336.75-.75v-1.016h1.098c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"></path></g></svg>                 
+                            </div>
+                        </div>
+                        <div class="newTwitBoxBody p-2 d-flex justify-content-between">
+                            <div class="newTwitBoxUserAvatar text-center">
+                                <i class="fa-solid fa-circle-user fa-3x top-50"></i>
+                            </div>
+                            <div class="newTwitBoxBody p-3 flex-grow-1 position-relative">
+                                <form action="/tweet" method="post">
+                                    <div class="mb-3">
+                                        <input type="text" name="tweetInput" placeholder='¿Qué está pasando?' class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <span>Cualquier Persona te puede responder</span>
+                                    </div>
+                                    <div class="newTwitBoxFooter d-flex justify-content-between align-items-end">
+                                        <ul class="list-inline">
+                                                <li class="list-inline-item"> <img src="img/noun-image-1029116.svg" alt=""></li>
+                                                <li class="list-inline-item"><img src="img/noun-gif-4147498.svg" alt=""></li>
+                                                <li class="list-inline-item"><img src="img/noun-poll-4027650.svg" alt=""></li>
+                                                <li class="list-inline-item"><img src="img/noun-smile-1740164.svg" alt=""></li>
+                                                <li class="list-inline-item"><img src="img/noun-calendar-4859136.svg" alt=""></li>
+                                                <li class="list-inline-item"><img src="img/noun-location-4853675.svg" alt=""></li>
+                                        </ul>
+                                        <div>
+                                            <button type="submit" class="btn twitterColor d-inline text-white border-radius rounded-pill"><h5>Twittear</h5> </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                      <span>Cualquier Persona te puede responder</span>
+                    <div class="twitFeed border">
+                        <%for(let tweet of tweets){%>
+                        <div class="tweet d-flex border">
+                            <div class="tweetUserImg px-2">
+                                <i class="fa-solid fa-circle-user fa-2x top-50"></i>
+                            </div>
+                            <div class="tweetContent px-2">
+                                <div class="tweetHeader">
+                                    <h6 class="d-inline"><%=tweet.author.firstName%></h6>
+                                    <span> - <%=tweet.date%></span>
+                                </div>
+                                <div class="tweetBody">
+                                    <p><%=tweet.text%></p>
+                                </div>
+                                <div class="tweetFooter d-flex justify-content-around">
+                                    <div>
+                                        <i class="fa-regular fa-comment"></i><span></span>
+                                   </div>
+                                   <div>
+                                    <i class="fa-solid fa-retweet"></i>
+                                   </div>
+                                   <div>
+                                    <i class="fa-regular fa-heart"></i><span><%=tweet.likes%></span>
+                                   </div>
+                                   <div><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <%}%>
                     </div>
                     <div
                       class="newTwitBoxFooter d-flex justify-content-between"
