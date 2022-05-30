@@ -61,3 +61,32 @@ width: 40px;
 font-size: 14px;
 color: grey;
 }
+
+.iconBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+i.fa-brands.fa-twitter {
+  color: white;
+  font-size: 30vw;
+}
+
+button.btn.btn-light {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.btn-block {
+  margin-bottom: 10px;
+  width: 100%;
+  background-color: black;
+  color: rgb(29, 155, 240);
+}
+
+.boton-celeste {
+  background-color: rgb(29, 155, 240);
+  border-color: rgb(29, 155, 240);
+  color: white;
+}
