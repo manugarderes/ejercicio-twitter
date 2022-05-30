@@ -9,6 +9,7 @@ app.set("view engine", "ejs");
 // userSeeder()
 // tweetSeeder()
 
+app.use(express.urlencoded({extended : true}))
 app.use(express.static("public"));
 app.use("/", router);
 
