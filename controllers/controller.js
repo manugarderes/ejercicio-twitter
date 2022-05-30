@@ -6,8 +6,9 @@ const controller = {
   showWelcome: (req, res) => {
     res.render("welcome");
   },
-  showHome: (req, res) => {
-    res.render("home");
+  showHome: async (req, res) => {
+    const tweets = await Tweet.find().populate("author");
+    res.render("home", {tweets});
   },
   showRegister: (req, res) => {
     res.render("register");
@@ -16,7 +17,7 @@ const controller = {
     const { tweetInput } = req.body;
     const tweet = new Tweet({
       text: tweetInput,
-      author: "62951435c8ff23acd662739d", //Author Id de prueba !!, Hay que cambiarlo por req.user.id
+      author: "62951b549eca97619d41c8ed", //Author Id de prueba !!, Hay que cambiarlo por req.user.id
     });
     tweet.save((error) => {
       if (error) res.sendStatus(500);
