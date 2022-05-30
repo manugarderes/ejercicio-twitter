@@ -9,7 +9,9 @@ app.set("view engine", "ejs")
 userSeeder()
 tweetSeeder()
 
+app.use(express.static("public"));
 app.use("/", router);
+
 app.listen(3000, () => {
     console.log("Servidor corriendo en el puerto 3000")
 })
