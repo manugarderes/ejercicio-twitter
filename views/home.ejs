@@ -16,11 +16,15 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/Styles.css" />
+    <link rel="stylesheet" href="css/Seba.css" />
     <link rel="icon" href="img/twitter.2.ico" />
     <script src="https://kit.fontawesome.com/ab663b69f8.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
   </head>
   
 <body>
+    
     <section>
         <div class="container">
             <div class="row">
@@ -44,7 +48,7 @@
                             <div class="newTwitBoxBody p-3 flex-grow-1 position-relative">
                                 <form action="/tweet" method="post">
                                     <div class="mb-3">
-                                        <input type="text" name="tweetInput" placeholder='¿Qué está pasando?' class="form-control">
+                                        <input type="text" name="tweetInput" id= 'tweetInput' placeholder='¿Qué está pasando?' class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <span>Cualquier Persona te puede responder</span>
@@ -102,10 +106,6 @@
         </div>
       </div>
     </section>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-      crossorigin="anonymous"
-    ></script>
+    <script src="/js/seba.js"></script>
   </body>
 </html>

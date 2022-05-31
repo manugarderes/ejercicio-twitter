@@ -41,11 +41,9 @@ passport.use(
   })
 );
 passport.serializeUser(function (user, done) {
-  console.log("entro a serialize");
   done(null, user.username);
 });
 passport.deserializeUser(function (user, done) {
-  console.log("entro a deserialize", user);
   User.findOne({ username: user })
     .then((user) => {
       done(null, user); // Usuario queda disponible en req.user.
