@@ -95,7 +95,7 @@ const controller = {
     const tweets = await Tweet.find({ author: req.params.id }).populate(
       "author"
     );
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id).populate("followers");
     const { firstName, username, followers, following } = user;
     res.render("profile", {
       tweets,

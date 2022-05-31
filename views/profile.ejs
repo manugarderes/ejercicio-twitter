@@ -37,6 +37,11 @@
                         <h6>@<%= username  %> </h6>
                         <p> description </p>
                         <p>Followers <span id="followers"><%= followers.length %></span></p>
+                        <ul>
+                          <% for(const follower of followers){ %> 
+                            <%= follower.firstName %> 
+                          <% } %> 
+                        </ul>
                         <p>Following <%= following.length %></p>
                         <% if(!own) {%> 
                         <button id="follow" class="btn btn-primary">Follow!</button>
