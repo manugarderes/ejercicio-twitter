@@ -5,15 +5,19 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{height:200vh;}
-
 .newTwitBoxUserAvatar i {
 margin-top: 0.5rem;
 }
 
 .newTwitBoxFooter img{
 width: 30px;
+height: 30px;
 margin: 2px 5px;
+}
+
+.newTwitBoxFooter ul li:hover{
+  background-color:rgba(29, 155, 240,0.1) ;
+  cursor: pointer;
 }
 
 .navBar{
