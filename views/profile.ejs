@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile / Twitter</title>
-    <link rel="stylesheet" href="../css/manu.css">
+    <link rel="stylesheet" href="/css/manu.css">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,8 +16,8 @@
       src="https://kit.fontawesome.com/ab663b69f8.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="css/Styles.css" />
-    <link rel="icon" href="img/twitter.2.ico" />
+    <link rel="stylesheet" href="/css/Styles.css" />
+    <link rel="icon" href="/img/twitter.2.ico" />
     <script src="https://kit.fontawesome.com/ab663b69f8.js" crossorigin="anonymous"></script>
   </head>
   
@@ -39,7 +39,7 @@
                         <p>Followers <%= followers %></p>
                         <p>Following <%= following %></p>
                         <% if(!own) {%> 
-                        <button class="btn btn-primary">Follow!</button>
+                        <button id="follow" class="btn btn-primary">Follow!</button>
                         <% } %> 
                     </div>
                     </div>
@@ -84,5 +84,17 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      const followButton = document.getElementById("follow")
+      followButton.addEventListener("click", function(){
+        const url = window.location.href
+        axios.get(
+          `http://localhost:3000/follow/${url.split("/profile/")[1]}`
+          ).then((result) => {
+            alert(result.data)
+        })
+      })
+    </script>
   </body>
 </html>

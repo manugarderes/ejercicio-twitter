@@ -10,6 +10,7 @@ router.get("/login", isNotLoggedIn, controller.showLogin);
 router.get("/failedLogin", controller.showFailedLogin);
 router.get("/profile", isLoggedIn, controller.showProfile);
 router.get("/profile/:id", isLoggedIn, controller.showOtherProfile);
+router.get("/follow/:id", isLoggedIn, controller.followUser);
 
 router.post("/tweet", isLoggedIn, controller.createTweet);
 router.post("/register", isNotLoggedIn, controller.createUser);

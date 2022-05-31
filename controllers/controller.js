@@ -106,6 +106,9 @@ const controller = {
       own : false
     });
   },
+  followUser: async (req, res) => {
+    res.send(req.params.id)
+  }
 };
 
 module.exports = controller;
