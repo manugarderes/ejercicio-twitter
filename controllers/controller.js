@@ -14,9 +14,6 @@ const controller = {
     res.render("register");
   },
   createTweet: (req, res) => {
-    console.log(req.body);
-  },
-  showLogin: (req, res) => {
     res.render("login");
     const { tweetInput } = req.body;
     const tweet = new Tweet({
