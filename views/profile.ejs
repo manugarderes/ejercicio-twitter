@@ -38,6 +38,9 @@
                         <p> description </p>
                         <p>Followers <%= followers %></p>
                         <p>Following <%= following %></p>
+                        <% if(!own) {%> 
+                        <button class="btn btn-primary">Follow!</button>
+                        <% } %> 
                     </div>
                     </div>
                     <div class="twitFeed border">

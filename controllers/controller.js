@@ -85,9 +85,13 @@ const controller = {
       username,
       followers: followers.length,
       following: following.length,
+      own : true
     });
   },
   showOtherProfile: async (req, res) => {
+    if (req.params.id === req.user.id) {
+      res.redirect("/profile")
+    }
     const tweets = await Tweet.find({ author: req.params.id }).populate(
       "author"
     );
@@ -99,6 +103,7 @@ const controller = {
       username,
       followers: followers.length,
       following: following.length,
+      own : false
     });
   },
 };

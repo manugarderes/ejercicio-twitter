@@ -73,9 +73,11 @@
                     <div class="twitFeed border">
                         <%for(let tweet of tweets){%>
                         <div class="tweet d-flex border">
-                            <div class="tweetUserImg px-2">
-                                <i class="fa-solid fa-circle-user fa-2x top-50"></i>
-                            </div>
+                            <a href=<%= `http://localhost:3000/profile/${tweet.author._id}` %> >
+                                <div class="tweetUserImg px-2">
+                                    <i class="fa-solid fa-circle-user fa-2x top-50"></i>
+                                </div>
+                            </a>
                             <div class="tweetContent px-2">
                                 <div class="tweetHeader">
                                     <h6 class="d-inline"><%=tweet.author.firstName%></h6>
