@@ -48,9 +48,9 @@ const controller = {
         profileImg,
         password: hash,
       });
-      user.save((error) => {
+      user.save((error, savedUser) => {
         if (error) res.sendStatus(500);
-        return user;
+        return savedUser;
       });
     });
   },
