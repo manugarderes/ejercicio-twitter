@@ -13,12 +13,15 @@ const controller = {
   showRegister: (req, res) => {
     res.render("register");
   },
-  createTweet: (req, res) => {
+  showLogin: (req, res) => {
     res.render("login");
+  },
+  createTweet: async (req, res) => {
+    const user = await User.findOne()
     const { tweetInput } = req.body;
     const tweet = new Tweet({
       text: tweetInput,
-      author: "62951b549eca97619d41c8ed", //Author Id de prueba !!, Hay que cambiarlo por req.user.id
+      author: user.id, //Author Id de prueba !!, Hay que cambiarlo por req.user.id
     });
     tweet.save((error) => {
       if (error) res.sendStatus(500);

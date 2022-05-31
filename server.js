@@ -6,9 +6,7 @@ const tweetSeeder = require("./seeders/tweetSeeder");
 
 app.set("view engine", "ejs");
 
-//userSeeder()
-//tweetSeeder()
-
+userSeeder()
 
 app.use(express.urlencoded({extended : true}))
 app.use(express.json())
