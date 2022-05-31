@@ -87,6 +87,20 @@ const controller = {
       following: following.length,
     });
   },
+  showOtherProfile: async (req, res) => {
+    const tweets = await Tweet.find({ author: req.params.id }).populate(
+      "author"
+    );
+    const user = await User.findById(req.params.id);
+    const { firstName, username, followers, following } = user;
+    res.render("profile", {
+      tweets,
+      firstName,
+      username,
+      followers: followers.length,
+      following: following.length,
+    });
+  },
 };
 
 module.exports = controller;
