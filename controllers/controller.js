@@ -76,6 +76,11 @@ const controller = {
       failureRedirect: "/failedLogin",
     })(req, res);
   },
+  showProfile: async (req, res) => {
+    const tweets = await Tweet.find({ author: req.user.id }).populate("author");
+    const { firstName, username } = req.user;
+    res.render("profile", { tweets, firstName, username });
+  },
 };
 
 module.exports = controller;

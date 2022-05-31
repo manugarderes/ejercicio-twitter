@@ -5,9 +5,10 @@ const { isLoggedIn, isNotLoggedIn } = require("../middlewares/authenticated");
 
 router.get("/", controller.showWelcome);
 router.get("/home", isLoggedIn, controller.showHome);
-router.get("/register",isNotLoggedIn, controller.showRegister);
+router.get("/register", isNotLoggedIn, controller.showRegister);
 router.get("/login", isNotLoggedIn, controller.showLogin);
 router.get("/failedLogin", controller.showFailedLogin);
+router.get("/profile", isLoggedIn, controller.showProfile);
 
 router.post("/tweet", isLoggedIn, controller.createTweet);
 router.post("/register", isNotLoggedIn, controller.createUser);

@@ -1,0 +1,11 @@
+img.banner {
+  width: 100%;
+}
+
+.profile-info {
+  margin: 10px;
+}
+
+.profile-info h6 {
+  color: grey;
+}
