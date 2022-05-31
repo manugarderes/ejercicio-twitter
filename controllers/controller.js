@@ -1,6 +1,7 @@
 const { Tweet } = require("../models/Tweet");
 const { User } = require("../models/User");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 const controller = {
   showWelcome: (req, res) => {
@@ -8,7 +9,9 @@ const controller = {
   },
   showHome: async (req, res) => {
     const tweets = await Tweet.find().populate("author");
-    res.render("home", { tweets });
+    console.log("esto es req.user", req.user);
+    const { username, email } = req.user;
+    res.render("home", { tweets, username, email });
   },
   showRegister: (req, res) => {
     res.render("register");
@@ -16,8 +19,12 @@ const controller = {
   showLogin: (req, res) => {
     res.render("login");
   },
+
+  showFailedLogin: (req, res) => {
+    res.render("failedLogin");
+  },
   createTweet: async (req, res) => {
-    const user = await User.findOne()
+    const user = await User.findOne();
     const { tweetInput } = req.body;
     const tweet = new Tweet({
       text: tweetInput,
@@ -53,6 +60,12 @@ const controller = {
         return savedUser;
       });
     });
+  },
+  login: (req, res) => {
+    passport.authenticate("local", {
+      successRedirect: "/home",
+      failureRedirect: "/failedLogin",
+    })(req, res);
   },
 };
 
