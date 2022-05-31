@@ -83,8 +83,8 @@ const controller = {
       tweets,
       firstName,
       username,
-      followers: followers.length,
-      following: following.length,
+      followers: followers,
+      following: following,
       own : true
     });
   },
@@ -101,13 +101,17 @@ const controller = {
       tweets,
       firstName,
       username,
-      followers: followers.length,
-      following: following.length,
+      followers: followers,
+      following: following,
       own : false
     });
   },
   followUser: async (req, res) => {
-    res.send(req.params.id)
+    const userToFollow = await User.findById(req.params.id)
+    const myUser = await User.findById(req.user.id)
+    await userToFollow.updateOne({followers : [...userToFollow.followers, myUser]})
+    await myUser.updateOne({following : [...myUser.following, userToFollow]})
+    res.send(userToFollow.followers)
   }
 };
 

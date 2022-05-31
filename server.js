@@ -36,7 +36,6 @@ passport.use(
       console.log("Las contraseñas no son compatibles");
       return done(null, false, { msj: "Las contraseñas no son compatibles" });
     }
-    console.log(user);
     return done(null, user);
   })
 );
