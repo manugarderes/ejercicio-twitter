@@ -9,9 +9,12 @@ const controller = {
   },
   showHome: async (req, res) => {
     const tweets = await Tweet.find().populate("author");
-    console.log("esto es req.user", req.user);
-    const { username, email } = req.user;
-    res.render("home", { tweets, username, email });
+    if (req.user) {
+      const { firstName, username } = req.user;
+      res.render("home", { tweets, firstName, username });
+    } else {
+      res.render("home", { tweets, firstName: "", username: "" });
+    }
   },
   showRegister: (req, res) => {
     res.render("register");
@@ -57,7 +60,13 @@ const controller = {
       });
       user.save((error, savedUser) => {
         if (error) res.sendStatus(500);
-        res.redirect("/home")
+        req.login(savedUser, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.redirect("/home");
+          }
+        });
       });
     });
   },

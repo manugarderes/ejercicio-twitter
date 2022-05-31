@@ -11,5 +11,9 @@ router.get("/failedLogin", controller.showFailedLogin);
 router.post("/tweet", controller.createTweet);
 router.post("/register", controller.createUser);
 router.post("/login", controller.login);
+router.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = router;

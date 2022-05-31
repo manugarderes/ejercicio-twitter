@@ -259,15 +259,11 @@
         .getElementById("button-5")
         .addEventListener("click", function () {
           axios.post("http://localhost:3000/register", {
-            firstname: document.getElementById("nameSecond").value,
-            lastName: "lastname",
-            username: "username",
-            email: document.getElementById("emailSecond").value,
-            desciption: "desciption",
-            profileImg: "profileImg",
+            firstName: document.getElementById("nameSecond").value,
+            username: document.getElementById("emailSecond").value,
             password: document.getElementById("password").value,
           })
-          .then((result) => alert("Usuario creado exitosamente"));
+          .then((result) => {document.location.href = 'http://localhost:3000/home'});
         });
     </script>
 
