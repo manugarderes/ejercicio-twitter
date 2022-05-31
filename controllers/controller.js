@@ -31,7 +31,7 @@ const controller = {
     const { tweetInput } = req.body;
     const tweet = new Tweet({
       text: tweetInput,
-      author: user.id, //Author Id de prueba !!, Hay que cambiarlo por req.user.id
+      author: req.user.id, //Author Id de prueba !!, Hay que cambiarlo por req.user.id
     });
     tweet.save((error) => {
       if (error) res.sendStatus(500);
