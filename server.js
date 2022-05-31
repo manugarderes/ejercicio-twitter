@@ -2,14 +2,14 @@ const express = require("express");
 const app = express();
 const router = require("./routes/routes");
 const userSeeder = require("./seeders/userSeeder");
-const tweetSeeder = require("./seeders/tweetSeeder");
+// const tweetSeeder = require("./seeders/tweetSeeder");
 
 app.set("view engine", "ejs");
 
-userSeeder()
+// userSeeder();
 
-app.use(express.urlencoded({extended : true}))
-app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static("public"));
 app.use("/", router);
 
