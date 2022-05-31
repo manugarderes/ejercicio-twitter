@@ -50,7 +50,7 @@ const controller = {
       });
       user.save((error) => {
         if (error) res.sendStatus(500);
-        res.redirect("/home");
+        return user;
       });
     });
   },
