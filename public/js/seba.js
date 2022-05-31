@@ -6,7 +6,8 @@ const popoverList = [...popoverTriggerList].map(
 );
 
 const accMenuDiv = document.querySelector("#accMenuDiv");
+const accMenuPopUp = document.querySelector("#accMenuPopUp");
 
 accMenuDiv.addEventListener("click", (e) => {
-  e;
+  accMenuPopUp.classList.toggle("hidden");
 });

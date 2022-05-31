@@ -45,20 +45,34 @@
           </div>
         </a>
           <div>
-            <a href="#" class="btn btn-primary twitterColor"><h5>Twittear</h5></a>
+            <button type="submit" class="btn twitterColor d-inline text-white border-radius rounded-pill"><h5>Twittear</h5></button>
           </div>
         </a>
       </div>
-        <div class="accMenuDiv d-flex" id="accMenuDiv" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content='vamo peñarol'>
-          <div class="flex-grow-1">
+      <div id="accMenuPopUp" class="hidden border shadow rounded-4">
+          <div class="accMenuPopUpHeader d-flex">
+            <div>
+              <i class="fa-solid fa-circle-user fa-3x"></i>
+            </div>
+            <div class="flex-grow-1">
+              <h6><%=firstName%></h6>
+              <p><%=username%></p>           
+            </div>
+          </div>
+        <div class="accMenuPopUpBody rounded-pill">
+          <a href="/logout">Cerrar la sesión de <%=username%></a>
+        </div>
+      </div>
+        <div class="accMenuDiv d-flex rounded-pill w-100 px-2" id="accMenuDiv">
+          <div>
             <i class="fa-solid fa-circle-user fa-3x"></i>
           </div>
-          <div class="flex-grow-1">
+          <div>
             <h6><%=firstName%></h6>
             <p><%=username%></p>           
           </div>
-          <div class="flex-grow-1 text-center top-50">
-            <h4 class="m-0">...</h4>
+          <div class="text-center">
+            <h4>...</h4>
           </div>
         </div>
     </div>  
