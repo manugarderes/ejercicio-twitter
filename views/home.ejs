@@ -15,12 +15,16 @@
       src="https://kit.fontawesome.com/ab663b69f8.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="css/Seba.css" />
     <link rel="stylesheet" href="css/Styles.css" />
     <link rel="icon" href="img/twitter.2.ico" />
     <script src="https://kit.fontawesome.com/ab663b69f8.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
   </head>
   
 <body>
+    
     <section>
         <div class="container">
             <div class="row">
@@ -44,19 +48,19 @@
                             <div class="newTwitBoxBody p-3 flex-grow-1 position-relative">
                                 <form action="/tweet" method="post">
                                     <div class="mb-3">
-                                        <input type="text" name="tweetInput" placeholder='¿Qué está pasando?' class="form-control">
+                                        <input type="text" name="tweetInput" id= 'tweetInput' placeholder='¿Qué está pasando?' class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <span>Cualquier Persona te puede responder</span>
                                     </div>
                                     <div class="newTwitBoxFooter d-flex justify-content-between align-items-end">
                                         <ul class="list-inline">
-                                                <li class="list-inline-item"> <img src="img/noun-image-1029116.svg" alt=""></li>
-                                                <li class="list-inline-item"><img src="img/noun-gif-4147498.svg" alt=""></li>
-                                                <li class="list-inline-item"><img src="img/noun-poll-4027650.svg" alt=""></li>
-                                                <li class="list-inline-item"><img src="img/noun-smile-1740164.svg" alt=""></li>
-                                                <li class="list-inline-item"><img src="img/noun-calendar-4859136.svg" alt=""></li>
-                                                <li class="list-inline-item"><img src="img/noun-location-4853675.svg" alt=""></li>
+                                                <li class="list-inline-item rounded-circle"> <img src="img/noun-image-1029116.svg" alt=""></li>
+                                                <li class="list-inline-item rounded-circle"><img src="img/noun-gif-4147498.svg" alt=""></li>
+                                                <li class="list-inline-item rounded-circle"><img src="img/noun-poll-4027650.svg" alt=""></li>
+                                                <li class="list-inline-item rounded-circle"><img src="img/noun-smile-1740164.svg" alt=""></li>
+                                                <li class="list-inline-item rounded-circle"><img src="img/noun-calendar-4859136.svg" alt=""></li>
+                                                <li class="list-inline-item rounded-circle"><img src="img/noun-location-4853675.svg" alt=""></li>
                                         </ul>
                                         <div>
                                             <button type="submit" class="btn twitterColor d-inline text-white border-radius rounded-pill"><h5>Twittear</h5> </button>
@@ -69,9 +73,11 @@
                     <div class="twitFeed border">
                         <%for(let tweet of tweets){%>
                         <div class="tweet d-flex border">
-                            <div class="tweetUserImg px-2">
-                                <i class="fa-solid fa-circle-user fa-2x top-50"></i>
-                            </div>
+                            <a href=<%= `http://localhost:3000/profile/${tweet.author._id}` %> >
+                                <div class="tweetUserImg px-2">
+                                    <i class="fa-solid fa-circle-user fa-2x top-50"></i>
+                                </div>
+                            </a>
                             <div class="tweetContent px-2">
                                 <div class="tweetHeader">
                                     <h6 class="d-inline"><%=tweet.author.firstName%></h6>
@@ -96,57 +102,12 @@
                         </div>
                         <%}%>
                     </div>
-                    <div
-                      class="newTwitBoxFooter d-flex justify-content-between"
-                    >
-                      <div>
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <img src="img/noun-image-1029116.svg" alt="" />
-                          </li>
-                          <li class="list-inline-item">
-                            <img src="img/noun-gif-4147498.svg" alt="" />
-                          </li>
-                          <li class="list-inline-item">
-                            <img src="img/noun-poll-4027650.svg" alt="" />
-                          </li>
-                          <li class="list-inline-item">
-                            <img src="img/noun-smile-1740164.svg" alt="" />
-                          </li>
-                          <li class="list-inline-item">
-                            <img src="img/noun-calendar-4859136.svg" alt="" />
-                          </li>
-                          <li class="list-inline-item">
-                            <img src="img/noun-location-4853675.svg" alt="" />
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <button
-                          type="submit"
-                          class="btn twitterColor d-inline text-white border-radius rounded-pill"
-                        >
-                          <h5>Twittear</h5>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
                 </div>
-              </div>
+                <div class="col-3"><%- include('partials/tendencias') %></div>
             </div>
-            <div class="twitFeed">
-              <div class="tweet"></div>
-            </div>
-          </div>
-          <div class="col-3"><%- include('partials/tendencias') %></div>
         </div>
       </div>
     </section>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-      crossorigin="anonymous"
-    ></script>
+    <script src="/js/seba.js"></script>
   </body>
 </html>

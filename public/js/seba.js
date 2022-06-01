@@ -1,0 +1,13 @@
+const popoverTriggerList = document.querySelectorAll(
+  '[data-bs-toggle="popover"]'
+);
+const popoverList = [...popoverTriggerList].map(
+  (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
+);
+
+const accMenuDiv = document.querySelector("#accMenuDiv");
+const accMenuPopUp = document.querySelector("#accMenuPopUp");
+
+accMenuDiv.addEventListener("click", (e) => {
+  accMenuPopUp.classList.toggle("hidden");
+});

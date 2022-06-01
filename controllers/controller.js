@@ -1,6 +1,7 @@
 const { Tweet } = require("../models/Tweet");
 const { User } = require("../models/User");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 const controller = {
   showWelcome: (req, res) => {
@@ -8,7 +9,12 @@ const controller = {
   },
   showHome: async (req, res) => {
     const tweets = await Tweet.find().populate("author");
-    res.render("home", { tweets });
+    if (req.user) {
+      const { firstName, username } = req.user;
+      res.render("home", { tweets, firstName, username });
+    } else {
+      res.render("home", { tweets, firstName: "", username: "" });
+    }
   },
   showRegister: (req, res) => {
     res.render("register");
@@ -16,12 +22,16 @@ const controller = {
   showLogin: (req, res) => {
     res.render("login");
   },
+
+  showFailedLogin: (req, res) => {
+    res.render("failedLogin");
+  },
   createTweet: async (req, res) => {
-    const user = await User.findOne()
+    const user = await User.findOne();
     const { tweetInput } = req.body;
     const tweet = new Tweet({
       text: tweetInput,
-      author: user.id, //Author Id de prueba !!, Hay que cambiarlo por req.user.id
+      author: req.user.id, //Author Id de prueba !!, Hay que cambiarlo por req.user.id
     });
     tweet.save((error) => {
       if (error) res.sendStatus(500);
@@ -48,12 +58,70 @@ const controller = {
         profileImg,
         password: hash,
       });
-      user.save((error) => {
+      user.save((error, savedUser) => {
         if (error) res.sendStatus(500);
-        res.redirect("/home");
+        req.login(savedUser, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.redirect("/home");
+          }
+        });
       });
     });
   },
+  login: (req, res) => {
+    passport.authenticate("local", {
+      successRedirect: "/home",
+      failureRedirect: "/failedLogin",
+    })(req, res);
+  },
+  showProfile: async (req, res) => {
+    const tweets = await Tweet.find({ author: req.user.id }).populate("author");
+    const { firstName, username, followers, following } = req.user;
+    res.render("profile", {
+      tweets,
+      firstName,
+      username,
+      followers: followers,
+      following: following,
+      own : true,
+      including : false
+    });
+  },
+  showOtherProfile: async (req, res) => {
+    if (req.params.id === req.user.id) {
+      res.redirect("/profile")
+    }
+    const tweets = await Tweet.find({ author: req.params.id }).populate(
+      "author"
+    );
+    const user = await User.findById(req.params.id).populate("followers");
+    const myUser = await User.findById(req.user.id).populate("following");
+    const { firstName, username, followers, following } = user;
+    var including = false;
+    for(const following of myUser.following){
+      if (following.id === req.params.id) {
+        including = true
+      }
+    }
+    res.render("profile", {
+      tweets,
+      firstName,
+      username,
+      followers: followers,
+      following: following,
+      own : false,
+      including
+    });
+  },
+  followUser: async (req, res) => {
+    const userToFollow = await User.findById(req.params.id)
+    const myUser = await User.findById(req.user.id)
+    await userToFollow.updateOne({followers : [...userToFollow.followers, myUser]})
+    await myUser.updateOne({following : [...myUser.following, userToFollow]})
+    res.send(userToFollow.followers)
+  }
 };
 
 module.exports = controller;
