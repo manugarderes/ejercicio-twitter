@@ -135,13 +135,16 @@ const controller = {
     const myUser = await User.findById(req.user.id);
     const tweetToLike = await Tweet.findById(req.params.id);
     if (!tweetToLike.likes.includes(myUser._id)) {
-      await tweetToLike.updateOne({ likes: [...tweetToLike.likes, myUser] });
-    } else {
-      const tweetToLikeLikesUpdated = tweetToLike.likes.filter(
-        (userToDelete) => {
-          userToDelete !== myUser._id;
-        }
+      const likesUpdated = await tweetToLike.updateOne(
+        {
+          likes: [...tweetToLike.likes, myUser],
+        },
+        { new: true }
       );
+    } else {
+      const tweetToLikeLikesUpdated = tweetToLike.likes.filter((userToKeep) => {
+        return String(userToKeep) !== String(myUser._id);
+      });
       await tweetToLike.updateOne({ likes: [...tweetToLikeLikesUpdated] });
     }
     res.redirect("/home");
