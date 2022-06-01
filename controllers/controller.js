@@ -10,10 +10,10 @@ const controller = {
   showHome: async (req, res) => {
     const tweets = await Tweet.find().populate("author");
     if (req.user) {
-      const { firstName, username } = req.user;
-      res.render("home", { tweets, firstName, username });
+      const { firstName, username, _id } = req.user;
+      res.render("home", { tweets, firstName, username, _id });
     } else {
-      res.render("home", { tweets, firstName: "", username: "" });
+      res.render("home", { tweets, firstName: "", username: "", _id : ''});
     }
   },
   showRegister: (req, res) => {
@@ -140,7 +140,22 @@ const controller = {
 
     await userToUnFollow.updateOne({followers : newFollowersArray})
     await myUser.updateOne({following : newFollowingArray})
-  }
+  },
+  addLike: async (req, res) => {
+    const myUser = await User.findById(req.user.id);
+    const tweetToLike = await Tweet.findById(req.params.id);
+    if (!tweetToLike.likes.includes(myUser._id)) {
+      await tweetToLike.updateOne({ likes: [...tweetToLike.likes, myUser] });
+    } else {
+      const tweetToLikeLikesUpdated = tweetToLike.likes.filter(
+        (userToDelete) => {
+          userToDelete !== myUser._id;
+        }
+      );
+      await tweetToLike.updateOne({ likes: [...tweetToLikeLikesUpdated] });
+    }
+    res.redirect("/home");
+  },
 };
 
 module.exports = controller;
