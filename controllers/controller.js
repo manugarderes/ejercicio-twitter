@@ -121,6 +121,25 @@ const controller = {
     await userToFollow.updateOne({followers : [...userToFollow.followers, myUser]})
     await myUser.updateOne({following : [...myUser.following, userToFollow]})
     res.send(userToFollow.followers)
+  },
+  unfollowUser: async (req, res) => {
+    const userToUnFollow = await User.findById(req.params.id).populate("followers")
+    const myUser = await User.findById(req.user.id).populate("following")
+    newFollowersArray = []
+    userToUnFollow.followers.map((follower) => {
+      if (follower.id !== myUser.id) {
+        newFollowersArray.push(follower)
+      }
+    })
+    newFollowingArray = []
+    myUser.following.map((follow) => {
+      if (follow.id !== userToUnFollow.id) {
+        newFollowingArray.push(follow)
+      }
+    })
+
+    await userToUnFollow.updateOne({followers : newFollowersArray})
+    await myUser.updateOne({following : newFollowingArray})
   }
 };
 
