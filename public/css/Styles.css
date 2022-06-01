@@ -134,3 +134,11 @@ footer a{
 .hidden{
     display:none;
   }
+
+#likeTweet{
+  color: black;
+}
+
+#solid-heart{
+  color: #f91880;
+}
