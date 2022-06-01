@@ -13,6 +13,7 @@ router.get("/profile/:id", isLoggedIn, controller.showOtherProfile);
 router.get("/follow/:id", isLoggedIn, controller.followUser);
 router.get("/unfollow/:id", isLoggedIn, controller.unfollowUser);
 router.get("/likeTweet/:id", isLoggedIn, controller.addLike);
+router.get("/delete/:id", isLoggedIn, controller.deleteTweet);
 
 router.post("/tweet", isLoggedIn, controller.createTweet);
 router.post("/register", isNotLoggedIn, controller.createUser);

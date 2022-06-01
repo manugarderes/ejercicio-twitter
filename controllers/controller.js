@@ -156,6 +156,11 @@ const controller = {
     }
     res.redirect("/home");
   },
+  deleteTweet: async (req, res) => {
+    const tweet = await Tweet.findById(req.params.id);
+    await tweet.delete();
+    res.redirect("/profile");
+  }
 };
 
 module.exports = controller;

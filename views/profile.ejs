@@ -64,6 +64,9 @@
                                 </div>
                                 <div class="tweetBody">
                                     <p><%=tweet.text%></p>
+                                    <% if(own){ %>
+                                      <a href=<%= `/delete/${tweet.id}` %> >Borrar</a>
+                                    <% } %>  
                                 </div>
                                 <div class="tweetFooter d-flex justify-content-around">
                                     <div>
