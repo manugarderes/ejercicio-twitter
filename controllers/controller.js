@@ -9,11 +9,15 @@ const controller = {
   },
   showHome: async (req, res) => {
     const tweets = await Tweet.find().populate("author");
+    // const myUser = await User.findById(req.user.id);
+    // const tweetToLike = await Tweet.findById(req.params.id);
+    // doesInclude = tweetToLike.likes.includes(myUser._id);
+    // console.log("does include, ", doesInclude);
     if (req.user) {
       const { firstName, username, _id } = req.user;
       res.render("home", { tweets, firstName, username, _id });
     } else {
-      res.render("home", { tweets, firstName: "", username: "", _id : ''});
+      res.render("home", { tweets, firstName: "", username: "", _id: "" });
     }
   },
   showRegister: (req, res) => {
@@ -27,7 +31,6 @@ const controller = {
     res.render("failedLogin");
   },
   createTweet: async (req, res) => {
-    const user = await User.findOne();
     const { tweetInput } = req.body;
     const tweet = new Tweet({
       text: tweetInput,
@@ -85,13 +88,13 @@ const controller = {
       username,
       followers: followers,
       following: following,
-      own : true,
-      including : false
+      own: true,
+      including: false,
     });
   },
   showOtherProfile: async (req, res) => {
     if (req.params.id === req.user.id) {
-      res.redirect("/profile")
+      res.redirect("/profile");
     }
     const tweets = await Tweet.find({ author: req.params.id }).populate(
       "author"
@@ -100,9 +103,9 @@ const controller = {
     const myUser = await User.findById(req.user.id).populate("following");
     const { firstName, username, followers, following } = user;
     var including = false;
-    for(const following of myUser.following){
+    for (const following of myUser.following) {
       if (following.id === req.params.id) {
-        including = true
+        including = true;
       }
     }
     res.render("profile", {
@@ -111,47 +114,54 @@ const controller = {
       username,
       followers: followers,
       following: following,
-      own : false,
-      including
+      own: false,
+      including,
     });
   },
   followUser: async (req, res) => {
-    const userToFollow = await User.findById(req.params.id)
-    const myUser = await User.findById(req.user.id)
-    await userToFollow.updateOne({followers : [...userToFollow.followers, myUser]})
-    await myUser.updateOne({following : [...myUser.following, userToFollow]})
-    res.send(userToFollow.followers)
+    const userToFollow = await User.findById(req.params.id);
+    const myUser = await User.findById(req.user.id);
+    await userToFollow.updateOne({
+      followers: [...userToFollow.followers, myUser],
+    });
+    await myUser.updateOne({ following: [...myUser.following, userToFollow] });
+    res.send(userToFollow.followers);
   },
   unfollowUser: async (req, res) => {
-    const userToUnFollow = await User.findById(req.params.id).populate("followers")
-    const myUser = await User.findById(req.user.id).populate("following")
-    newFollowersArray = []
+    const userToUnFollow = await User.findById(req.params.id).populate(
+      "followers"
+    );
+    const myUser = await User.findById(req.user.id).populate("following");
+    newFollowersArray = [];
     userToUnFollow.followers.map((follower) => {
       if (follower.id !== myUser.id) {
-        newFollowersArray.push(follower)
+        newFollowersArray.push(follower);
       }
-    })
-    newFollowingArray = []
+    });
+    newFollowingArray = [];
     myUser.following.map((follow) => {
       if (follow.id !== userToUnFollow.id) {
-        newFollowingArray.push(follow)
+        newFollowingArray.push(follow);
       }
-    })
+    });
 
-    await userToUnFollow.updateOne({followers : newFollowersArray})
-    await myUser.updateOne({following : newFollowingArray})
+    await userToUnFollow.updateOne({ followers: newFollowersArray });
+    await myUser.updateOne({ following: newFollowingArray });
   },
   addLike: async (req, res) => {
     const myUser = await User.findById(req.user.id);
     const tweetToLike = await Tweet.findById(req.params.id);
     if (!tweetToLike.likes.includes(myUser._id)) {
-      await tweetToLike.updateOne({ likes: [...tweetToLike.likes, myUser] });
-    } else {
-      const tweetToLikeLikesUpdated = tweetToLike.likes.filter(
-        (userToDelete) => {
-          userToDelete !== myUser._id;
-        }
+      const likesUpdated = await tweetToLike.updateOne(
+        {
+          likes: [...tweetToLike.likes, myUser],
+        },
+        { new: true }
       );
+    } else {
+      const tweetToLikeLikesUpdated = tweetToLike.likes.filter((userToKeep) => {
+        return String(userToKeep) !== String(myUser._id);
+      });
       await tweetToLike.updateOne({ likes: [...tweetToLikeLikesUpdated] });
     }
     res.redirect("/home");
@@ -160,7 +170,7 @@ const controller = {
     const tweet = await Tweet.findById(req.params.id);
     await tweet.delete();
     res.redirect("/profile");
-  }
+  },
 };
 
 module.exports = controller;

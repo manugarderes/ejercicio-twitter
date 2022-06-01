@@ -135,10 +135,10 @@ footer a{
     display:none;
   }
 
-  #likeTweet{
-    color: black;
-  }
-  
-  #solid-heart{
-    color: #f91880;
-  }
+#likeTweet{
+  color: black;
+}
+
+#solid-heart{
+  color: #f91880;
+}
