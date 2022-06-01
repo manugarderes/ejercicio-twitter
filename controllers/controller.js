@@ -85,8 +85,7 @@ const controller = {
       username,
       followers: followers,
       following: following,
-      own : true,
-      including : false
+      own : true
     });
   },
   showOtherProfile: async (req, res) => {
@@ -97,22 +96,14 @@ const controller = {
       "author"
     );
     const user = await User.findById(req.params.id).populate("followers");
-    const myUser = await User.findById(req.user.id).populate("following");
     const { firstName, username, followers, following } = user;
-    var including = false;
-    for(const following of myUser.following){
-      if (following.id === req.params.id) {
-        including = true
-      }
-    }
     res.render("profile", {
       tweets,
       firstName,
       username,
       followers: followers,
       following: following,
-      own : false,
-      including
+      own : false
     });
   },
   followUser: async (req, res) => {

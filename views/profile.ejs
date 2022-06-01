@@ -43,7 +43,7 @@
                           <% } %> 
                         </ul>
                         <p>Following <%= following.length %></p>
-                        <% if(!own && !including) {%> 
+                        <% if(!own) {%> 
                         <button id="follow" class="btn btn-primary">Follow!</button>
                         <% } %> 
                     </div>
@@ -101,7 +101,6 @@
             newFollowersNumber = followers.length + 1
 
             document.getElementById("followers").innerHTML = newFollowersNumber
-            followButton.style.display = "none"
         })
       })
     </script>
