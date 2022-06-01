@@ -120,47 +120,45 @@
             Introduce tu contraseña
           </h3>
 
-          <form action="/login" method="POST">
-            <div class="mb-2">
-              <div class="form-floating mb-3">
-                <input
-                  type="email"
-                  class="form-control input-email"
-                  id="username"
-                  placeholder="Correo electrónico"
-                  name="username"
-                />
-                <label for="email">correo@gmail.com</label>
-              </div>
-              <div class="form-floating mb-5">
-                <input
-                  type="password"
-                  class="form-control input-email"
-                  id="password"
-                  placeholder="Contraseña"
-                  name="password"
-                />
-                <label for="password">Contraseña</label>
-                <small style="color: #1d98f0">¿Olvidaste tu contraseña?</small>
-              </div>
-              <div
-                class="button-container d-flex justify-content-center"
-                style="height: 160px"
-              >
-                <button
-                  type="submit"
-                  class="btn btn-primary btn-lg bg-dark rounded-pill mt-auto button"
-                  id="button-1"
-                >
-                  Iniciar sesión
-                </button>
-              </div>
-              <small style="color: rgb(83, 100, 113)"
-                >¿No tienes una cuenta?
-                <a href="/register">Regístrate</a></small
-              >
+          <div class="mb-2">
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control input-email"
+                id="email"
+                placeholder="Correo electrónico"
+                name="email"
+              />
+              <label for="email">correo@gmail.com</label>
             </div>
-          </form>
+            <div class="form-floating mb-5">
+              <input
+                type="password"
+                class="form-control input-email"
+                id="password"
+                placeholder="Contraseña"
+                name="password"
+              />
+              <label for="password">Contraseña</label>
+              <small style="color: #1D98F0"
+              >¿Olvidaste tu contraseña?</small
+            </div>
+            <div
+              class="button-container d-flex justify-content-center"
+              style="height: 160px"
+            >
+              <button
+                type="button"
+                class="btn btn-primary btn-lg bg-dark rounded-pill mt-auto button"
+                id="button-1"
+              >
+                Iniciar sesión
+              </button>
+            </div>
+            <small style="color: rgb(83, 100, 113)"
+              >¿No tienes una cuenta? <a href="/register">Regístrate</a></small
+            >
+          </div>
         </div>
       </div>
     </div>
